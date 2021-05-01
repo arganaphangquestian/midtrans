@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script
+      id="midtrans-script"
+      src="https://api.midtrans.com/v2/assets/js/midtrans-new-3ds.min.js"
+      data-environment="sandbox"
+      data-client-key="SB-Mid-client-UL_fy13PdTGmtFC-"
+      type="text/javascript"
+    ></script>
+    <script>
+      var card = {
+        card_number: "4811111111111114",
+        card_cvv: "123",
+        card_exp_month: "12",
+        card_exp_year: "2023",
+      };
+
+      var options = {
+        onSuccess: function (response) {
+          console.log(response);
+        },
+        onFailure: function (response) {
+          console.error(response);
+        },
+      };
+
+      MidtransNew3ds.getCardToken(card, options);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+### Get All Products
+GET http://127.0.0.1:8080/api/products
+
+### Get Product by id
+GET http://127.0.0.1:8080/api/products/1
+
+### New Transactions
+POST http://127.0.0.1:8080/api/products/1
+Content-Type: application/json
+
+{
+  "amount": 2,
+  "token_id": "asasasasasas"
+}
+
+### Create invoice
+POST https://api.sandbox.midtrans.com/v2/charge
+Content-Type: application/json
+Accept: application/json
+Authorization: Basic U0ItTWlkLXNlcnZlci1aNEdxVHpuVnhNSFZmdEUxb21fZXg0STc6
+
+{
+  "payment_type": "credit_card",
+  "transaction_details": {
+    "order_id": "C17551",
+    "gross_amount": 145000
+  },
+  "credit_card": {
+    "token_id": "481111-1114-dbf8a7e4-5726-4dad-bc32-56c8064719fd"
+  },
+  "item_details": [{
+    "id": "a1",
+    "price": 145000,
+    "quantity": 1,
+    "name": "Apel",
+    "brand": "Fuji Apple",
+    "category": "Fruit",
+    "merchant_name": "Fruit-store"
+  }],
+  "customer_details": {
+    "first_name": "BUDI",
+    "last_name": "UTOMO",
+    "email": "test@midtrans.com",
+    "phone": "+628123456",
+    "billing_address": {
+      "first_name": "BUDI",
+      "last_name": "UTOMO",
+      "email": "test@midtrans.com",
+      "phone": "081 2233 44-55",
+      "address": "Sudirman",
+      "city": "Jakarta",
+      "postal_code": "12190",
+      "country_code": "IDN"
+    },
+    "shipping_address": {
+      "first_name": "BUDI",
+      "last_name": "UTOMO",
+      "email": "test@midtrans.com",
+      "phone": "0 8128-75 7-9338",
+      "address": "Sudirman",
+      "city": "Jakarta",
+      "postal_code": "12190",
+      "country_code": "IDN"
+    }
+  }
+}
+
+
+### Create invoice
+GET https://api.sandbox.midtrans.com/v2/C17551/status
+Content-Type: application/json
+Accept: application/json
+Authorization: Basic U0ItTWlkLXNlcnZlci1aNEdxVHpuVnhNSFZmdEUxb21fZXg0STc6
