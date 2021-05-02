@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/segmentio/ksuid"
 )
 
@@ -40,6 +41,10 @@ var transactions = []transaction{}
 
 func main() {
 	app := fiber.New()
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+	}))
 
 	app.Get("/", func(ctx *fiber.Ctx) error {
 		return ctx.Status(200).JSON(&fiber.Map{
